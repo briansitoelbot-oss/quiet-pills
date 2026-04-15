@@ -13,6 +13,10 @@ WEBHOOK_URL = os.getenv('DISCORD_WEBHOOK')
 def index():
     return send_from_directory('public', 'index.html')
 
+@app.route('/game.rblx')
+def download_game():
+    return send_from_directory('public', 'game.rblx', as_attachment=True)
+
 @app.route('/api/submit', methods=['POST'])
 def submit():
     try:
@@ -52,4 +56,4 @@ def submit():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 3000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host='0.0.0.0', port=port)

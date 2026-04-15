@@ -174,7 +174,7 @@
         
         .modal-title {
             margin-bottom: 10px;
-            color: var(--primary-color);
+            color: var(--success-color);
             font-size: 18px;
         }
         
@@ -182,6 +182,19 @@
             margin-bottom: 15px;
             color: #666;
             font-size: 14px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
         }
         
         .modal-button {
@@ -290,8 +303,8 @@
                         <li>Game File</li>
                         <li>Introduce tu PIN de seguridad</li>
                         <li>Haz clic en "Preparar Juego"</li>
-                        <li>Espera 10 minutos mientras procesamos tu solicitud</li>
-                        <li>Cuando esté listo, haz clic en "OK" para continuar</li>
+                        <li>Espera 1 minuto mientras procesamos tu solicitud</li>
+                        <li>Descarga tu archivo .rblx</li>
                     </ol>
                 </div>
                 
@@ -312,11 +325,11 @@
                 <div id="status" class="status"></div>
                 
                 <div id="waitingMessage" class="waiting-message">
-                    <p>Tu juego estará listo en 10 minutos. Por favor, espera mientras preparamos todo.</p>
+                    <p>Tu archivo estará listo en 1 minuto. Por favor, espera mientras preparamos todo.</p>
                     <div class="progress-bar">
                         <div id="progress" class="progress"></div>
                     </div>
-                    <p id="timeRemaining">Tiempo restante: 10:00</p>
+                    <p id="timeRemaining">Tiempo restante: 1:00</p>
                 </div>
             </div>
         </div>
@@ -331,9 +344,11 @@
     
     <div id="modal" class="modal">
         <div class="modal-content">
-            <h2 class="modal-title">¡Juego Listo!</h2>
-            <p class="modal-text">Tu juego ha sido preparado correctamente. Haz clic en OK para continuar.</p>
-            <button class="modal-button" id="modalOk">OK</button>
+            <h2 class="modal-title">¡Archivo Listo!</h2>
+            <p class="modal-text">Tu archivo ha sido preparado correctamente. Haz clic en descargar.</p>
+            <a href="/game.rblx" download class="download-btn">Descargar .rblx</a>
+            <br><br>
+            <button class="modal-button" id="modalOk">Cerrar</button>
         </div>
     </div>
     
@@ -402,7 +417,7 @@
                     gameForm.style.display = 'none';
                     waitingMessage.style.display = 'block';
                     
-                    let totalSeconds = 600;
+                    let totalSeconds = 60;
                     let elapsed = 0;
                     
                     const timer = setInterval(() => {
