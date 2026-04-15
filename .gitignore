@@ -1,0 +1,4 @@
+# Variables de entorno (NO SUBIR A GITHUB)
+.env
+.env.*
+*.env
